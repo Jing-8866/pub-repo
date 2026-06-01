@@ -24,8 +24,10 @@ $(document).ready(function() {
     // 搜索功能
     function performSearch() {
         const searchTerm = $('#system-search').val().toLowerCase().trim();
-        const showActiveOnly = $('#filter-active').is(':checked');
-        const showAllSystems = $('#filter-all').is(':checked');
+        const showActiveOnly = $('#filter-active').is(':checked'); // 运行中
+        const showInActiveOnly = $('#filter-inactive').is(':checked'); // 已停用
+        const showMaintenanceOnly = $('#filter-maintenance').is(':checked'); // 维护中
+        const showAllSystems = $('#filter-all').is(':checked'); // 全部
         
         let visibleCards = 0;
         let totalCards = 0;

@@ -45,9 +45,11 @@
                             <div class="stat-content">
                                 <h3 class="stat-number" id="totalUsers">0</h3>
                                 <p class="stat-label">总用户数</p>
-                                <!-- <div class="stat-trend">
-                                    <span class="trend-text">较上月 +12%</span>
-                                </div> -->
+                                <!-- 
+								<div class="stat-trend">
+                                    <span class="trend-text">较上月 12%</span>
+                                </div>
+								-->
                             </div>
                         </div>
                         
@@ -138,7 +140,7 @@
                         <table class="user-table" id="userTable">
                             <thead>
                                 <tr>
-                                    <th width="50">#</th>
+                                    <th width="50">序号</th>
                                     <th>用户名</th>
                                     <th>用户角色</th>
                                     <th>昵称</th>
@@ -181,7 +183,57 @@
         </div>
     </div>
 
-    
+    <!-- 筛选模态框 -->
+    <!-- <div class="modal" id="filterModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">筛选用户</div>
+                <button class="close-modal" id="closeFilterModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>状态筛选</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="filterActive" checked>
+                            <span class="checkmark"></span>
+                            <span>启用</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="filterInactive" checked>
+                            <span class="checkmark"></span>
+                            <span>停用</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>角色筛选</label>
+                    <div class="checkbox-group vertical">
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="filterRoleAdmin" checked>
+                            <span class="checkmark"></span>
+                            <span>系统管理员</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="filterRoleManager" checked>
+                            <span class="checkmark"></span>
+                            <span>管理员</span>
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="filterRoleUser" checked>
+                            <span class="checkmark"></span>
+                            <span>普通用户</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="resetFilters">重置</button>
+                    <button type="button" class="btn btn-primary" id="applyFilters">应用筛选</button>
+                </div>
+            </div>
+        </div>
+    </div> -->
+
     <!-- 删除确认模态框 -->
     <div class="modal" id="deleteModal">
         <div class="modal-content">
@@ -342,7 +394,7 @@
     <script src="js/config.js"></script>
     <script src="js/filter.js"></script>
     <script src="js/table.js"></script>
-    <script src="js/form.js"></script>
+    <!-- <script src="js/form.js"></script> -->
     <script src="js/main.js"></script>
 </body>
 </html>

@@ -72,99 +72,17 @@
             
             <!-- 系统卡片区域 -->
             <div class="systems-grid" id="systems-grid">
-                <!-- 用户管理系统卡片 -->
-                <div class="system-card" data-system="user-management" data-name="用户管理系统" data-description="管理用户账户、角色和权限" data-status="active">
-                    <div class="card-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="card-title">用户管理系统</h3>
-                    <p class="card-desc">管理用户账户、角色和权限</p>
-                    <div class="card-footer">
-                        <span class="card-status">
-                            <i class="fas fa-circle status-active"></i> 运行中
-                        </span>
-                    </div>
-                </div>
-                
-                <!-- 订单管理系统卡片 -->
-                <div class="system-card" data-system="order-system" data-name="订单管理系统" data-description="处理订单、发货和退款" data-status="active">
-                    <div class="card-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <h3 class="card-title">订单管理系统</h3>
-                    <p class="card-desc">处理订单、发货和退款</p>
-                    <div class="card-footer">
-                        <span class="card-status">
-                            <i class="fas fa-circle status-active"></i> 运行中
-                        </span>
-                    </div>
-                </div>
-                
-                <!-- 校园管理系统卡片 -->
-                <div class="system-card" data-system="campus-system" data-name="校园管理系统" data-description="管理学生、课程和教务" data-status="active">
-                    <div class="card-icon">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <h3 class="card-title">校园管理系统</h3>
-                    <p class="card-desc">管理学生、课程和教务</p>
-                    <div class="card-footer">
-                        <span class="card-status">
-                            <i class="fas fa-circle status-active"></i> 运行中
-                        </span>
-                    </div>
-                </div>
-                
-                <!-- 数据库管理系统卡片 -->
-                <div class="system-card" data-system="database-system" data-name="数据库管理系统" data-description="管理数据库、备份和查询" data-status="maintenance">
-                    <div class="card-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3 class="card-title">数据库管理系统</h3>
-                    <p class="card-desc">管理数据库、备份和查询</p>
-                    <div class="card-footer">
-                        <span class="card-status">
-                            <i class="fas fa-circle status-maintenance"></i> 维护中
-                        </span>
-                    </div>
-                </div>
-                
-                <!-- 日志分析平台卡片 -->
-                <div class="system-card" data-system="log-system" data-name="日志分析平台" data-description="分析系统日志和监控" data-status="active">
-                    <div class="card-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="card-title">日志分析平台</h3>
-                    <p class="card-desc">分析系统日志和监控</p>
-                    <div class="card-footer">
-                        <span class="card-status">
-                            <i class="fas fa-circle status-active"></i> 运行中
-                        </span>
-                    </div>
-                </div>
-                
-                <!-- 示例：停用的系统卡片 -->
-                <div class="system-card" data-system="report-system" data-name="报表系统" data-description="生成各类报表和数据分析" data-status="inactive">
-                    <div class="card-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <h3 class="card-title">报表系统</h3>
-                    <p class="card-desc">生成各类报表和数据分析</p>
-                    <div class="card-footer">
-                        <span class="card-status">
-                            <i class="fas fa-circle status-inactive"></i> 已停用
-                        </span>
-                    </div>
-                </div>
-                
-                <!-- 添加新系统卡片 -->
+                <!-- 系统卡片将由此处的JavaScript动态生成 -->
+                <!-- “添加新系统”的卡片建议保留在HTML中，因为它不是来自配置列表 -->
                 <div class="system-card add-system">
                     <div class="card-icon">
                         <i class="fas fa-plus"></i>
                     </div>
                     <h3 class="card-title">添加新系统</h3>
-                    <p class="card-desc">点击添加新系统到门户</p>
+                    <p class="card-desc">点击此处配置并添加新的业务系统</p>
                 </div>
             </div>
+
             
             <!-- 无搜索结果提示 -->
             <div class="no-results" id="no-results" style="display: none;">
@@ -188,5 +106,92 @@
 
     <script src="js/main.js"></script>
     <script src="js/config.js"></script>
+    <script>
+        /**
+         * 动态渲染系统卡片到 #systems-grid 容器中
+         * 数据来源：config copy.js 中的 PortalConfig.systems
+         */
+        function renderSystemCards() {
+            const systemsGrid = document.getElementById('systems-grid');
+            if (!systemsGrid || !window.PortalConfig) {
+                console.error('无法找到系统网格容器或PortalConfig配置。');
+                return;
+            }
+
+            // 获取系统配置数组
+            const systems = PortalConfig.getAllSystems();
+            
+            // 清空现有动态生成的卡片（避免重复）
+            // 注意：这里我们只移除不是 ‘add-system’ 的卡片，保留“添加新系统”卡片
+            const dynamicCards = systemsGrid.querySelectorAll('.system-card:not(.add-system)');
+            dynamicCards.forEach(card => card.remove());
+
+            // 为每个系统配置生成卡片HTML并插入到“添加新系统”卡片之前
+            const addSystemCard = systemsGrid.querySelector('.add-system');
+            
+            systems.forEach(system => {
+                const systemCard = document.createElement('div');
+                systemCard.className = 'system-card';
+                systemCard.dataset.system = system.id;
+                systemCard.dataset.name = system.name;
+                systemCard.dataset.description = system.description;
+                systemCard.dataset.status = system.status;
+
+                // 根据 config copy.js 中的函数获取状态文本和CSS类
+                const statusText = PortalConfig.getStatusText(system.status);
+                const statusClass = PortalConfig.getStatusClass(system.status);
+
+                systemCard.innerHTML = `
+                    <div class="card-icon">
+                        <i class="${system.icon}"></i>
+                    </div>
+                    <h3 class="card-title">${system.name}</h3>
+                    <p class="card-desc">${system.description}</p>
+                    <div class="card-footer">
+                        <div class="card-status">
+                            <i class="fas fa-circle ${statusClass}"></i>
+                            <span>${statusText}</span>
+                        </div>
+                    </div>
+                `;
+
+                // 插入卡片，位置在“添加新系统”卡片之前
+                systemsGrid.insertBefore(systemCard, addSystemCard);
+
+                // 为动态生成的卡片绑定点击事件（与main.js中的逻辑保持一致）
+                systemCard.addEventListener('click', function() {
+                    // 这里可以复用或适配 main.js 中的点击跳转逻辑
+                    // 例如：window.location.href = `systems/${system.id}/index.html`;
+                    // 注意：原main.js中使用的是 data(‘system’)，即 system.id
+                    const systemId = this.dataset.system;
+                    // 添加点击动画效果（可选，如果main.js已统一处理则不需要）
+                    this.style.transform = 'scale(0.98)';
+                    this.style.boxShadow = '0 3px 8px rgba(0, 0, 0, 0.1)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                        this.style.boxShadow = '';
+                    }, 150);
+                    
+                    // 执行跳转，使用 config 中配置的 path，或按照规则拼接
+                    // 方案A: 使用配置中的完整 path
+                    // window.location.href = system.path;
+                    // 方案B: 按照原有规则拼接（与之前静态HTML的 data-system 对应）
+                    window.location.href = `systems/${systemId}/index.html`;
+                });
+            });
+
+            // 动态生成完成后，需要调用 main.js 中的 performSearch() 来初始化筛选和显示
+            // 确保 main.js 已加载，且 performSearch 函数在全局可访问
+            if (window.performSearch && typeof window.performSearch === 'function') {
+                setTimeout(window.performSearch, 0);
+            } else {
+                console.warn('main.js 中的 performSearch 函数未找到，搜索筛选功能可能无法正常初始化。');
+            }
+        }
+
+        // 页面加载完成后执行渲染
+        document.addEventListener('DOMContentLoaded', renderSystemCards);
+
+    </script>
 </body>
 </html>

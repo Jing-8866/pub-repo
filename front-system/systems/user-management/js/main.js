@@ -1,20 +1,34 @@
+// 初始化用户列表
+function getAllUserList(){
+    // // 获取用户列表
+    // $.getJSON('http://localhost:8080/api/users', function(data) {
+    //     console.log('用户数据:', data);
+    //     populateUserTable(data);
+    // }).fail(function(jqXHR, textStatus, error) {
+    //     console.error('获取数据失败:', textStatus, error);
+    // });
+    
+    const mockUsers = [
+        { id: 1, username: 'admin', role: '系统管理员', nickname: '超管', relname: '超级管理员', gender: '男', phone: '13800138000', email: 'admin@example.com', status: 'Enable', lastLogin: '2024-01-15 14:30' },
+        { id: 2, username: 'zhangsan', role: '普通用户', nickname: '张三', relname: '张三', gender: '男', phone: '13800138001', email: 'zhangsan@example.com', status: 'Enable', lastLogin: '2024-01-14 10:20' },
+        { id: 3, username: 'lisi', role: '普通用户', nickname: '李四', relname: '李四', gender: '女', phone: '13800138002', email: 'lisi@example.com', status: 'Pending', lastLogin: '2024-01-13 16:45' },
+        { id: 4, username: 'wangwu', role: '管理员', nickname: '王五', relname: '王五', gender: '男', phone: '13800138003', email: 'wangwu@example.com', status: 'Unable', lastLogin: '2024-01-10 09:15' },
+        { id: 5, username: 'zhaoliu', role: '普通用户', nickname: '赵六', relname: '赵六', gender: '女', phone: '13800138004', email: 'zhaoliu@example.com', status: 'Enable', lastLogin: '2024-01-12 11:30' },
+        { id: 6, username: 'sunqi', role: '管理员', nickname: '孙七', relname: '孙七', gender: '男', phone: '13800138005', email: 'sunqi@example.com', status: 'Enable', lastLogin: '2024-01-11 13:20' },
+        { id: 7, username: 'zhouba', role: '普通用户', nickname: '周八', relname: '周八', gender: '男', phone: '13800138006', email: 'zhouba@example.com', status: 'Enable', lastLogin: '2024-01-09 15:40' },
+        { id: 8, username: 'wujiu', role: '普通用户', nickname: '吴九', relname: '吴九', gender: '女', phone: '13800138007', email: 'wujiu@example.com', status: 'Enable', lastLogin: '2024-01-08 14:10' },
+        { id: 9, username: 'zhengshi', role: '管理员', nickname: '郑十', relname: '郑十', gender: '男', phone: '13800138008', email: 'zhengshi@example.com', status: 'Enable', lastLogin: '2024-01-07 16:25' },
+        { id: 10, username: 'testuser', role: '普通用户', nickname: '测试用户', relname: '测试用户', gender: '女', phone: '13800138009', email: 'test@example.com', status: 'Enable', lastLogin: '2024-01-06 10:50' }
+    ];
+    return mockUsers;
+}
+
 // 用户管理系统主逻辑
 $(document).ready(function() {
-    // 模拟用户数据
-    // const mockUsers = [
-    //     { id: 1, username: 'admin', role: '系统管理员', nickname: '超管', relname: '超级管理员', gender: '男', phone: '13800138000', email: 'admin@example.com', status: 'Enable', lastLogin: '2024-01-15 14:30' },
-    //     { id: 2, username: 'zhangsan', role: '普通用户', nickname: '张三', relname: '张三', gender: '男', phone: '13800138001', email: 'zhangsan@example.com', status: 'Enable', lastLogin: '2024-01-14 10:20' },
-    //     { id: 3, username: 'lisi', role: '普通用户', nickname: '李四', relname: '李四', gender: '女', phone: '13800138002', email: 'lisi@example.com', status: 'Pending', lastLogin: '2024-01-13 16:45' },
-    //     { id: 4, username: 'wangwu', role: '管理员', nickname: '王五', relname: '王五', gender: '男', phone: '13800138003', email: 'wangwu@example.com', status: 'Unable', lastLogin: '2024-01-10 09:15' },
-    //     { id: 5, username: 'zhaoliu', role: '普通用户', nickname: '赵六', relname: '赵六', gender: '女', phone: '13800138004', email: 'zhaoliu@example.com', status: 'Enable', lastLogin: '2024-01-12 11:30' },
-    //     { id: 6, username: 'sunqi', role: '管理员', nickname: '孙七', relname: '孙七', gender: '男', phone: '13800138005', email: 'sunqi@example.com', status: 'Enable', lastLogin: '2024-01-11 13:20' },
-    //     { id: 7, username: 'zhouba', role: '普通用户', nickname: '周八', relname: '周八', gender: '男', phone: '13800138006', email: 'zhouba@example.com', status: 'Enable', lastLogin: '2024-01-09 15:40' },
-    //     { id: 8, username: 'wujiu', role: '普通用户', nickname: '吴九', relname: '吴九', gender: '女', phone: '13800138007', email: 'wujiu@example.com', status: 'Enable', lastLogin: '2024-01-08 14:10' },
-    //     { id: 9, username: 'zhengshi', role: '管理员', nickname: '郑十', relname: '郑十', gender: '男', phone: '13800138008', email: 'zhengshi@example.com', status: 'Enable', lastLogin: '2024-01-07 16:25' },
-    //     { id: 10, username: 'testuser', role: '普通用户', nickname: '测试用户', relname: '测试用户', gender: '女', phone: '13800138009', email: 'test@example.com', status: 'Enable', lastLogin: '2024-01-06 10:50' }
-    // ];
 
+    // 获取用户列表
     const mockUsers = getAllUserList();
+
 
     // 分页配置
     const config = {
@@ -137,10 +151,8 @@ $(document).ready(function() {
             // const statusClass = user.status === 'active' ? 'status-active' : 'status-inactive';
 
             const userStatus = user.status 
-            const sexCode = user.gender 
-            let statusText = '' // 用户状态
-            let statusClass = '' // 用户状态
-            let sexText = '' // 性别
+            let statusText = ''
+            let statusClass = ''
 
 
             if (userStatus == 'Enable') {
@@ -149,23 +161,9 @@ $(document).ready(function() {
             } else if (userStatus == 'Pending') {
                 statusText = '待审核'
                 statusClass = 'status-pending'
-            } else if (userStatus == 'Lock') {
-                statusText = '锁定'
-                statusClass = 'status-lock'
             } else {
                 statusText = '停用'
                 statusClass = 'status-inactive'
-            }
-
-
-            if (sexCode == '0') {
-                sexText = '未知'
-            } else if (sexCode == '1') {
-                sexText = '男'
-            } else if (sexCode == '2') {
-                sexText = '女'
-            } else {
-                sexText = '未定义'
             }
             
             const row = `
@@ -175,8 +173,7 @@ $(document).ready(function() {
                     <td>${user.role}</td>
                     <td>${user.nickname}</td>
                     <td>${user.relname}</td>
-                    <!-- <td>${user.gender}</td> -->
-                    <td>${sexText}</td>
+                    <td>${user.gender}</td>
                     <td>${user.phone || '未设置'}</td>
                     <td>${user.email || '未设置'}</td>
                     <td><span class="status-badge ${statusClass}">${statusText}</span></td>
@@ -776,28 +773,3 @@ $(document).ready(function() {
         setupDeleteModal();
     }
 });
-
-function getAllUserList(){
-    // 获取用户列表
-    // $.getJSON('http://localhost:8080/usermanagement/user/getAllUser', function(data) {
-    //     console.log('用户数据:', data);
-    //     // populateUserTable(data.get("bo").get("userList"));
-    //     return data.get("bo").get("userList");
-    // }).fail(function(jqXHR, textStatus, error) {
-    //     console.error('获取数据失败:', textStatus, error);
-    // });
-    
-    const mockUsers = [
-        { id: 1, username: 'admin', role: '系统管理员', nickname: '超管', relname: '超级管理员', gender: '1', phone: '13800138000', email: 'admin@example.com', status: 'Enable', lastLogin: '2024-01-15 14:30' },
-        { id: 2, username: 'zhangsan', role: '普通用户', nickname: '张三', relname: '张三', gender: '1', phone: '13800138001', email: 'zhangsan@example.com', status: 'Enable', lastLogin: '2024-01-14 10:20' },
-        { id: 3, username: 'lisi', role: '普通用户', nickname: '李四', relname: '李四', gender: '2', phone: '13800138002', email: 'lisi@example.com', status: 'Pending', lastLogin: '2024-01-13 16:45' },
-        { id: 4, username: 'wangwu', role: '管理员', nickname: '王五', relname: '王五', gender: '1', phone: '13800138003', email: 'wangwu@example.com', status: 'Unable', lastLogin: '2024-01-10 09:15' },
-        { id: 5, username: 'zhaoliu', role: '普通用户', nickname: '赵六', relname: '赵六', gender: '2', phone: '13800138004', email: 'zhaoliu@example.com', status: 'Enable', lastLogin: '2024-01-12 11:30' },
-        { id: 6, username: 'sunqi', role: '管理员', nickname: '孙七', relname: '孙七', gender: '1', phone: '13800138005', email: 'sunqi@example.com', status: 'Enable', lastLogin: '2024-01-11 13:20' },
-        { id: 7, username: 'zhouba', role: '普通用户', nickname: '周八', relname: '周八', gender: '2', phone: '13800138006', email: 'zhouba@example.com', status: 'Enable', lastLogin: '2024-01-09 15:40' },
-        { id: 8, username: 'wujiu', role: '普通用户', nickname: '吴九', relname: '吴九', gender: '1', phone: '13800138007', email: 'wujiu@example.com', status: 'Enable', lastLogin: '2024-01-08 14:10' },
-        { id: 9, username: 'zhengshi', role: '管理员', nickname: '郑十', relname: '郑十', gender: '2', phone: '13800138008', email: 'zhengshi@example.com', status: 'Enable', lastLogin: '2024-01-07 16:25' },
-        { id: 10, username: 'testuser', role: '普通用户', nickname: '测试用户', relname: '测试用户', gender: '2', phone: '13800138009', email: 'test@example.com', status: 'Enable', lastLogin: '2024-01-06 10:50' }
-    ];
-    return mockUsers;
-}

@@ -39,6 +39,14 @@ $(document).ready(function() {
                         <span>权限管理</span>
                     </a>
                 </div>
+                <!--
+				<div class="nav-item">
+                    <a href="#" class="nav-link ${currentPage === 'logs' ? 'active' : ''}">
+                        <i class="fas fa-history"></i>
+                        <span>操作日志</span>
+                    </a>
+                </div>
+				-->
                 <div class="nav-item">
                     <a href="#" class="nav-link ${currentPage === 'settings' ? 'active' : ''}">
                         <i class="fas fa-cog"></i>
@@ -173,10 +181,10 @@ $(document).ready(function() {
                 pageTitle = '角色管理';
                 pageDesc = '管理系统角色';
                 break;
-            // case 'permission':
-            //     pageTitle = '权限管理';
-            //     pageDesc = '管理系统功能和操作权限';
-            //     break;
+            case 'permission':
+                pageTitle = '权限管理';
+                pageDesc = '管理系统功能和操作权限';
+                break;
         }
         
         loadHeader(pageTitle, pageDesc);
