@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>系统管理门户</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- <link rel="stylesheet" href="css/all.min.css"> -->
+    <script src="js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- 顶部导航栏 -->
+        <header class="header">
+            <div class="header-left">
+                <div class="logo">
+                    <i class="fas fa-th-large"></i>
+                    <h1>系统管理门户</h1>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="user-info">
+                    <span class="user-name">管理员</span>
+                    <div class="user-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <div class="welcome-section">
+                <h2>欢迎使用系统管理门户</h2>
+                <p>选择一个系统开始管理</p>
+            </div>
+            
+            <!-- 搜索栏 -->
+            <div class="search-section">
+                <div class="search-container">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="system-search" placeholder="搜索系统名称或描述...">
+                        <button class="search-clear" id="clear-search" style="display: none;">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="search-filters">
+                        <div class="filter-group">
+                            <span class="filter-label">筛选:</span>
+                            <div class="filter-options">
+                                <label class="filter-option">
+                                    <input type="checkbox" id="filter-active" checked>
+                                    <span class="filter-checkbox"></span>
+                                    <span>运行中</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" id="filter-all" checked>
+                                    <span class="filter-checkbox"></span>
+                                    <span>全部系统</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="search-results-info" id="search-results-info">
+                            显示全部 5 个系统
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 系统卡片区域 -->
+            <div class="systems-grid" id="systems-grid">
+                <!-- 用户管理系统卡片 -->
+                <div class="system-card" data-system="user-management" data-name="用户管理系统" data-description="管理用户账户、角色和权限" data-status="active">
+                    <div class="card-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="card-title">用户管理系统</h3>
+                    <p class="card-desc">管理用户账户、角色和权限</p>
+                    <div class="card-footer">
+                        <span class="card-status">
+                            <i class="fas fa-circle status-active"></i> 运行中
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- 订单管理系统卡片 -->
+                <div class="system-card" data-system="order-system" data-name="订单管理系统" data-description="处理订单、发货和退款" data-status="active">
+                    <div class="card-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3 class="card-title">订单管理系统</h3>
+                    <p class="card-desc">处理订单、发货和退款</p>
+                    <div class="card-footer">
+                        <span class="card-status">
+                            <i class="fas fa-circle status-active"></i> 运行中
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- 校园管理系统卡片 -->
+                <div class="system-card" data-system="campus-system" data-name="校园管理系统" data-description="管理学生、课程和教务" data-status="active">
+                    <div class="card-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <h3 class="card-title">校园管理系统</h3>
+                    <p class="card-desc">管理学生、课程和教务</p>
+                    <div class="card-footer">
+                        <span class="card-status">
+                            <i class="fas fa-circle status-active"></i> 运行中
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- 数据库管理系统卡片 -->
+                <div class="system-card" data-system="database-system" data-name="数据库管理系统" data-description="管理数据库、备份和查询" data-status="maintenance">
+                    <div class="card-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="card-title">数据库管理系统</h3>
+                    <p class="card-desc">管理数据库、备份和查询</p>
+                    <div class="card-footer">
+                        <span class="card-status">
+                            <i class="fas fa-circle status-maintenance"></i> 维护中
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- 日志分析平台卡片 -->
+                <div class="system-card" data-system="log-system" data-name="日志分析平台" data-description="分析系统日志和监控" data-status="active">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="card-title">日志分析平台</h3>
+                    <p class="card-desc">分析系统日志和监控</p>
+                    <div class="card-footer">
+                        <span class="card-status">
+                            <i class="fas fa-circle status-active"></i> 运行中
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- 示例：停用的系统卡片 -->
+                <div class="system-card" data-system="report-system" data-name="报表系统" data-description="生成各类报表和数据分析" data-status="inactive">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3 class="card-title">报表系统</h3>
+                    <p class="card-desc">生成各类报表和数据分析</p>
+                    <div class="card-footer">
+                        <span class="card-status">
+                            <i class="fas fa-circle status-inactive"></i> 已停用
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- 添加新系统卡片 -->
+                <div class="system-card add-system">
+                    <div class="card-icon">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <h3 class="card-title">添加新系统</h3>
+                    <p class="card-desc">点击添加新系统到门户</p>
+                </div>
+            </div>
+            
+            <!-- 无搜索结果提示 -->
+            <div class="no-results" id="no-results" style="display: none;">
+                <div class="no-results-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>未找到匹配的系统</h3>
+                <p>尝试使用其他关键词搜索，或调整筛选条件</p>
+                <button class="btn btn-primary" id="reset-search">
+                    <i class="fas fa-redo"></i> 重置搜索
+                </button>
+            </div>
+            
+            <!-- 底部信息 -->
+            <div class="footer-info">
+                <p>当前时间: <span id="current-time">2026-03-24 10:30:00</span></p>
+                <p>系统版本: 2.1.0 | 服务器状态: <span class="server-status">正常</span></p>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/config.js"></script>
+</body>
+</html>
