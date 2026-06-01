@@ -1,0 +1,208 @@
+/* 用户管理系统响应式设计 */
+
+/* 平板设备 (768px - 992px) */
+@media (max-width: 992px) {
+    .sidebar {
+        position: fixed;
+        left: -260px;
+        height: 100%;
+        transition: left 0.3s;
+    }
+    
+    .sidebar.show {
+        left: 0;
+    }
+    
+    .main-content {
+        width: 100%;
+    }
+    
+    .stats-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .control-content {
+        flex-wrap: wrap;
+    }
+    
+    .search-box {
+        min-width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    .control-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+    
+    .form-body {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 大屏手机 (576px - 768px) */
+@media (max-width: 768px) {
+    .content-container {
+        padding: 20px 15px;
+    }
+    
+    .main-header {
+        padding: 0 15px;
+    }
+    
+    .header-content {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 15px 0;
+    }
+    
+    .header-left {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    .header-actions {
+        order: 2;
+    }
+    
+    .header-right {
+        order: 3;
+        width: 100%;
+        margin-top: 15px;
+        justify-content: center;
+    }
+    
+    .stats-cards {
+        gap: 15px;
+    }
+    
+    .stat-card {
+        padding: 20px;
+    }
+    
+    .control-bar {
+        padding: 15px;
+    }
+    
+    .form-container {
+        padding: 20px 15px;
+    }
+    
+    .form-card {
+        padding: 30px 20px;
+    }
+    
+    .form-header h3 {
+        font-size: 1.5rem;
+    }
+}
+
+/* 小屏手机 (小于576px) */
+@media (max-width: 576px) {
+    .content-container {
+        padding: 15px 10px;
+    }
+    
+    .main-header {
+        padding: 0 10px;
+    }
+    
+    .stats-cards {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .stat-card {
+        padding: 15px;
+    }
+    
+    .stat-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .stat-icon i {
+        font-size: 1.3rem;
+    }
+    
+    .stat-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    .stat-content p {
+        font-size: 0.8rem;
+    }
+    
+    .control-bar {
+        padding: 12px;
+    }
+    
+    .control-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .table-header {
+        padding: 15px;
+    }
+    
+    .pagination {
+        padding: 15px;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .pagination-controls {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+    }
+    
+    .success-actions {
+        flex-direction: column;
+    }
+}
+
+/* 超小屏手机 (小于400px) */
+@media (max-width: 400px) {
+    .logo-text h1 {
+        font-size: 1.1rem;
+    }
+    
+    .logo-text p {
+        font-size: 0.7rem;
+    }
+    
+    .nav-link {
+        padding: 10px 12px;
+        font-size: 0.9rem;
+    }
+    
+    .user-name {
+        font-size: 0.9rem;
+    }
+    
+    .user-role {
+        font-size: 0.7rem;
+    }
+    
+    .page-title h2 {
+        font-size: 1.3rem;
+    }
+    
+    .page-title p {
+        font-size: 0.8rem;
+    }
+    
+    .btn span {
+        font-size: 0.85rem;
+    }
+}
