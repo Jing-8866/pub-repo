@@ -1,0 +1,12 @@
+{
+	"configuration": {},
+	"connectionName": "ur_kl_dws_uown_0",
+	"content": "-- DWS sql \n-- ******************************************************************** --\n-- author: \n-- create time: 2026/06/10 23:11:24 GMT+08:00\n-- 视图日期筛选器\n-- ******************************************************************** --\n\n\nDROP TABLE IF EXISTS kl_dm.dm_group_business_analysis_pc_filter;\n\nCREATE TABLE kl_dm.dm_group_business_analysis_pc_filter (\n    view_id varchar comment '视图编码',\n    view_name varchar comment '视图名称',\n    view_short_name varchar comment '视图名称简称',\n    dm bigint comment '分区年月',\n    data_date timestamp comment '数据日期',\n    year varchar comment '年份',\n    year_name varchar comment '年份名称',\n    year_month varchar comment '年月',\n    period varchar comment '会计期间',\n    period_code varchar comment '会计期间编码',\n    period_name varchar comment '会计期间名称',\n    period_short_name varchar comment '会计期间简称',\n    period_num bigint comment '期间序号',\n    quarter_code varchar comment '季度编码',\n    quarter_name varchar comment '季度名称',\n    quarter_short_code varchar comment '季度简称编码',\n    quarter_short_name varchar comment '季度简称',\n    create_time timestamp default current_timestamp(0) comment '数据创建时间',\n    update_time timestamp default current_timestamp(0) on update current_timestamp(0) comment '数据更新时间'\n)\nWITH (ORIENTATION = column, COMPRESSION = MIDDLE, colversion=3.0, enable_hstore_opt = true) DISTRIBUTE BY Roundrobin\ncomment '视图日期筛选器'\n;\n",
+	"currentDatabase": "kl_fin_dws_dev",
+	"description": "",
+	"directory": "/对象创建/dws/DDL",
+	"name": "dm_group_business_analysis_pc_filter",
+	"owner": "DWS",
+	"templateVersion": "1.0",
+	"type": "DWSSQL"
+}
